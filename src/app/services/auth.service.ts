@@ -1,34 +1,24 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false
-  isAdmin = false
 
-  constructor() { }
+  constructor(private afAuth: AngularFireAuth) { }
 
-  // Đăng nhập
-  login(username: string, password: string): boolean {
-    //Trong ví dụ này chỉ đơn giản kiểm tra username/password
-    if (username === 'admin' && password === 'admin') {
-      this.isLoggedIn = true
-      this.isAdmin = true
-      return true
-    } else if (username === 'user' && password === 'user') {
-      this.isLoggedIn = true
-      this.isAdmin = false
-      return true
-    } else {
-      this.isLoggedIn = false
-      return false
-    }
+
+  loginWithGoogle() {
+    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-  // Đăng xuất
-  logout(): void {
-    this.isLoggedIn = false
-    this.isAdmin = false
+  logout() {
+    return this.afAuth.signOut();
+  }
+
+  getUserFire() {
+    return this.afAuth.authState;
   }
 }

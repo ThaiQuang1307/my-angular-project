@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthService } from 'src/app/services/auth.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +11,37 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  loginForm: FormGroup<{
-    username: FormControl<string>;
-    password: FormControl<string>;
-  }> = this.fb.group({
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-  });
+  // user$ = this.authService.getUserFire();
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private fb: NonNullableFormBuilder,
-  ) { }
+  // loginForm: FormGroup<{
+  //   username: FormControl<string>;
+  //   password: FormControl<string>;
+  // }> = this.fb.group({
+  //   username: ['', [Validators.required]],
+  //   password: ['', [Validators.required]],
+  // });
 
-  // Đăng nhập
-  login(): void {
-    if (this.authService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)) {
-      // Đăng nhập thành công, điều hướng tới trang admin hoặc user tùy vào vai trò
-      if (this.authService.isAdmin) {
-        // Điều hướng tới trang admin
-        console.log('Trang admin')
-      } else {
-        // Điều hướng tới trang user
-        this.router.navigate(['/page-error/cooming-soon/1']);
-        console.log('Trang user')
-      }
-    } else {
-      // Đăng nhập thất bại
-      console.log('Login thất bại!')
-    }
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
+
+  constructor(private firebaseService: FirebaseService) { }
+
+  login() {
+    const auth = this.firebaseService.auth;
+    console.log(auth)
+    signInWithEmailAndPassword(auth, this.email, this.password)
+      .then((userCredential) => {
+        // Đăng nhập thành công
+        const user = userCredential.user;
+        console.log('Login successful:', user);
+        this.errorMessage = ''; // Xóa thông báo lỗi nếu đăng nhập thành công
+      })
+      .catch((error) => {
+        // Đăng nhập thất bại
+        console.error('Login failed:', error);
+        this.errorMessage = error.message;
+      });
   }
+
 }

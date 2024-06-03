@@ -11,12 +11,12 @@ export class AuthGuard implements CanActivate {
 
   // Kiểm tra quyền truy cập
   canActivate(): boolean {
-    if (this.authService.isLoggedIn) {
+    // if (this.authService.isLoggedIn) {
       return true;
-    } else {
-      // Nếu không đăng nhập, điều hướng về trang đăng nhập
-      this.router.navigate(['/login']);
-      return false;
-    }
+    // } else {
+    //   // Nếu không đăng nhập, điều hướng về trang đăng nhập
+    //   this.router.navigate(['/login']);
+    //   return false;
+    // }
   }
 }
