@@ -14,6 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { Page404Component } from './components/page-error/page-404/page-404.component';
+import { environment } from './environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +34,9 @@ import { Page404Component } from './components/page-error/page-404/page-404.comp
     NzButtonModule,
     NzIconModule,
     NzInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
