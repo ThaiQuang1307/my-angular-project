@@ -1,0 +1,15 @@
+<form nz-form [formGroup]="loginForm" (ngSubmit)="login()">
+    <nz-form-item>
+        <nz-form-control>
+            <nz-form-label [nzSpan]="24" nzRequired>Username</nz-form-label>
+            <input nz-input formControlName="username" placeholder="Nhập" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <nz-form-label [nzSpan]="24" nzRequired>Password</nz-form-label>
+            <input nz-input type="password" formControlName="password" placeholder="Nhập" />
+        </nz-form-control>
+    </nz-form-item>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+</form>

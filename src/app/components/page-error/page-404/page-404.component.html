@@ -1,0 +1,25 @@
+<div [ngSwitch]="404">
+    <div class="error-code-container">
+        <ng-container *ngSwitchDefault>
+            <img src="../../../../assets/images/404-error.svg">
+            <h2 class="error-code-text">Page not found</h2>
+        </ng-container>
+        <ng-container *ngSwitchCase="403">
+            <div>
+                <div>
+                    <div class="img-permission"></div>
+                </div>
+                <div>
+                    <div>
+                        Bạn không có quyền truy cập chức năng
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Vui lòng liên hệ admin
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
