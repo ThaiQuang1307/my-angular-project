@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { AuthService } from 'src/app/services/auth.service';
+import { PLACEHOLDER_TEXT, TITLE_PAGE } from 'src/app/constants/text.constant';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -11,37 +11,46 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  // user$ = this.authService.getUserFire();
+  placeholderText: string = PLACEHOLDER_TEXT.TEXTBOX
+  formLogin: FormGroup;
 
-  // loginForm: FormGroup<{
-  //   username: FormControl<string>;
-  //   password: FormControl<string>;
-  // }> = this.fb.group({
-  //   username: ['', [Validators.required]],
-  //   password: ['', [Validators.required]],
-  // });
+  constructor(
+    private firebaseService: FirebaseService,
+    private titleService: Title,
+    private router: Router,
+    private fb: FormBuilder,
+  ) {
+    this.titleService.setTitle(TITLE_PAGE.LOGIN);
 
-  email: string = '';
-  password: string = '';
-  errorMessage: string = '';
+    this.formLogin = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
+  }
 
-  constructor(private firebaseService: FirebaseService) { }
+  onSubmit() {
+    if (this.formLogin.valid) {
+      console.log('Form Submitted!', this.formLogin.value);
 
-  login() {
-    const auth = this.firebaseService.auth;
-    console.log(auth)
-    signInWithEmailAndPassword(auth, this.email, this.password)
-      .then((userCredential) => {
-        // Đăng nhập thành công
-        const user = userCredential.user;
-        console.log('Login successful:', user);
-        this.errorMessage = ''; // Xóa thông báo lỗi nếu đăng nhập thành công
-      })
-      .catch((error) => {
-        // Đăng nhập thất bại
-        console.error('Login failed:', error);
-        this.errorMessage = error.message;
-      });
+      // const auth = this.firebaseService.auth;
+      // console.log(auth)
+      // signInWithEmailAndPassword(auth, this.email, this.password)
+      //   .then((userCredential) => {
+      //     // Đăng nhập thành công
+      //     const user = userCredential.user;
+      //     console.log('Login successful:', user);
+      //     this.errorMessage = '';
+      //     this.router.navigate(['/home'])
+      //   })
+      //   .catch((error) => {
+      //     // Đăng nhập thất bại
+      //     console.error('Login failed:', error);
+      //     this.errorMessage = error.message;
+      //   });
+
+      this.router.navigate(['/home'])
+
+    }
   }
 
 }

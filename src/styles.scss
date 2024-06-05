@@ -1,4 +1,31 @@
-@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import url('./assets/fonts/font.scss');
+@import 'assets/styles/variables.scss';
 
-// Import your custom variables
-@import 'assets/styles/variables.scss'
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    --mat-toolbar-title-text-font: "Poppins-Regular", sans-serif;
+    --mat-toolbar-title-text-line-height: 1.5;
+    --mat-toolbar-title-text-size: 13px;
+    --mat-toolbar-title-text-weight: 400;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+    // font-family: "Poppins-Black", sans-serif !important;
+    font-style: normal;
+}
+
+body {
+    font-size: 1.3rem;
+}
+
+.title {
+    &-modal {
+        font-size: 3rem !important;
+        font-weight: 500;
+    }
+}

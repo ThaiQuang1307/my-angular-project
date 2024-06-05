@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-angular-project';
+  // title = 'my-angular-project';
+  isLoggined: boolean = false
 
   constructor(
     private router: Router,

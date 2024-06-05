@@ -2,13 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { ToastrModule } from 'ngx-toastr';
-
-// Import Ant Design modules
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzInputModule } from 'ng-zorro-antd/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +12,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FirebaseService } from './services/firebase.service';
+import { MaterialModule } from './material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,15 +24,11 @@ import { FirebaseService } from './services/firebase.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    // ToastrModule,
     AppRoutingModule,
-    NzFormModule,
-    NzButtonModule,
-    NzIconModule,
-    NzInputModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    MaterialModule,
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
