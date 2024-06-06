@@ -1,0 +1,81 @@
+<!-- <div class="login-container">
+    <div class="login-content">
+        <mat-card>
+            <mat-toolbar color="primary" class="login-title">
+                <span class="fill-remaining-space title-modal">Đăng nhập</span>
+            </mat-toolbar>
+
+            <form >
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email" required placeholder="nguyenvana@gmail.com">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Mật khẩu</mat-label>
+                    <input matInput [type]="true ? 'password' : 'text'" formControlName="password" required>
+                    <button mat-icon-button matSuffix [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="true">
+                        <mat-icon>{{true ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+       
+            </form>
+        </mat-card>
+    </div>
+</div> -->
+
+
+<div class="parent"> 
+    <div class="container" [ngClass]="isSignDivVisiable ? 'active' :'' " id="container">
+        <div class="form-container sign-up" >
+            <form>
+                <h1>Tạo tài khoản</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>hoặc sử dụng email để đăng ký</span>
+                <input type="text" name="name" [(ngModel)]="signUpObj.name" placeholder="Tên tài khoản">
+                <input type="email" name="email" [(ngModel)]="signUpObj.email" placeholder="Email">
+                <input type="password" name="password"  [(ngModel)]="signUpObj.password" placeholder="Mật khẩu">
+                <button (click)="onRegister()">Đăng ký</button>
+            </form>
+        </div>
+        <div class="form-container sign-in" >
+            <form>
+                <h1>Đăng nhập</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>hoặc sử dụng tài khoản</span>
+                <input type="email" name="email" [(ngModel)]="loginObj.email" placeholder="Email">
+                <input type="password" name="password"   [(ngModel)]="loginObj.password" placeholder="Mật khẩu">
+                <a href="#">→ Quên mật khẩu? ←</a>
+                <button class="btn btn-primary-2" (click)="onLogin()">Đăng nhập</button>
+                <button mat-raised-button class="btn btn-primary">Đăng nhập</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Chào mừng trở lại!</h1>
+                    <p>Nhập thông tin cá nhân của bạn để sử dụng tất cả tính năng của trang web</p>
+                    <button type="button" class="hidden" id="login" (click)="isSignDivVisiable = false">Đăng nhập</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Xin chào!</h1>
+                    <p>Đăng ký với thông tin cá nhân của bạn để sử dụng tất cả tính năng của trang web</p>
+                    <button type="button" class="hidden" id="register" (click)="isSignDivVisiable = true">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@ import { TITLE_PAGE } from 'src/app/constants/text.constant';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
 

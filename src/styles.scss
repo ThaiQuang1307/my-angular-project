@@ -4,28 +4,63 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
+    font-family: "Poppins-Regular", sans-serif !important;
 }
 
 html {
-    --mat-toolbar-title-text-font: "Poppins-Regular", sans-serif;
-    --mat-toolbar-title-text-line-height: 1.5;
-    --mat-toolbar-title-text-size: 13px;
-    --mat-toolbar-title-text-weight: 400;
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 1.5;
-    // font-family: "Poppins-Black", sans-serif !important;
-    font-style: normal;
+    font-size: var(--base-font-size);
+
+    * {
+        font-size: var(--normal-font-size);
+        line-height: 1.5;
+        font-weight: var(--normal-font-weight);
+        font-style: normal;
+    }
 }
 
+html,
 body {
-    font-size: 1.3rem;
+    height: 100&;
 }
 
 .title {
     &-modal {
-        font-size: 3rem !important;
-        font-weight: 500;
+        font-size: var(--large-font-size);
+        font-weight: 400;
     }
 }
+
+// Start: custom material
+.mat-typography {
+    font-family: "Poppins-Regular", sans-serif !important;
+}
+
+// icon custom
+.material-icons {
+    display: inline-block;
+    font-family: 'Material Icons' !important;
+}
+
+.fa, .fab {
+    font-family: 'Font Awesome 6 Brands' !important;
+}
+
+// Button custom
+button.btn {
+    &-primary.mat-mdc-raised-button {
+        --mdc-protected-button-container-color: var(--primary-1);
+        --mdc-protected-button-label-text-color: var(--text-light-1);
+        font-size: var(--small-font-size) !important;
+        padding: 10px 40px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: var(--bold-font-weight) !important;
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+}
+
+// End: custom material

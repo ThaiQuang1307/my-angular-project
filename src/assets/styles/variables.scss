@@ -1,19 +1,30 @@
-// Colors
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$success-color: #28a745;
-$error-color: #dc3545;
+:root {
+    --primary-1: #512da8;
+    // --primary-1: red;
+    --primary-2: #5c6bc0;
+    --primary-3: #c9d6ff;
 
-// Font sizes
-$base-font-size: 16px;
-$large-font-size: 20px;
-$small-font-size: 12px;
+    // Font sizes
+    --base-font-size: 10px;
+    --normal-font-size: 1.4rem;
+    --large-font-size: 2.4rem;
+    --small-font-size: 1.2rem;
 
-// Spacing
-$padding-small: 5px;
-$padding-medium: 10px;
-$padding-large: 20px;
+    // Font weight
+    --normal-font-weight: 400;
+    --bold-font-weight: 600;
 
-$margin-small: 5px;
-$margin-medium: 10px;
-$margin-large: 20px;
+    // text color
+    --text-main-1: #000000;
+    --text-dark-1: #000000;
+    --text-light-1: #ffffff;
+
+    // background color
+    --background-white-1: #ffffff;
+    --background-white-2: #e2e2e2;
+    --background-input-1: #eee;
+
+
+    // shadow
+    --box-shadow-1: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
