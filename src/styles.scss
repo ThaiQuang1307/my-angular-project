@@ -43,23 +43,79 @@ body {
     font-family: 'Material Icons' !important;
 }
 
-.fa, .fab {
+i,
+.fa,
+.fab,
+.fa-brands {
     font-family: 'Font Awesome 6 Brands' !important;
 }
 
 // Button custom
-button.btn {
-    &-primary.mat-mdc-raised-button {
-        --mdc-protected-button-container-color: var(--primary-1);
-        --mdc-protected-button-label-text-color: var(--text-light-1);
-        font-size: var(--small-font-size) !important;
+button {
+    &.btn.mat-mdc-raised-button {
         padding: 10px 40px;
-        border: 1px solid transparent;
         border-radius: 8px;
-        font-weight: var(--bold-font-weight) !important;
+        cursor: pointer;
+
+        span.mdc-button__label {
+            font-size: var(--small-font-size) !important;
+            font-weight: var(--bold-font-weight) !important;
+        }
+    }
+
+    &.btn-primary {
+        --mdc-protected-button-container-color: var(--primary-1) !important;
+        --mdc-protected-button-label-text-color: var(--text-light-1) !important;
+        border: 1px solid transparent;
         text-transform: uppercase;
         margin-top: 10px;
-        cursor: pointer;
+    }
+
+    &.btn-transparent {
+        border-color: #fff !important;
+        background-color: transparent !important;
+    }
+}
+
+// Input custom
+
+mat-form-field {
+    width: 100%;
+    margin: 8px 0;
+    border-radius: 8px;
+    background-color: var(--background-input-1) !important;
+    overflow: hidden;
+
+    // * {
+    //     background: none !important;
+    //     outline: none !important;
+    //     border: none !important;
+    // }
+
+    // .mat-mdc-form-field-infix {
+    //     padding: 0 !important;
+    //     height: 100%;
+    //     min-height: 56px;
+    //     display: flex;
+    //     align-items: center;
+    // }
+
+    .mdc-text-field--filled {
+        --mdc-filled-text-field-active-indicator-height: 0;
+        --mdc-filled-text-field-focus-active-indicator-height: 2px;
+        --mdc-filled-text-field-container-shape: 4px;
+        border-top-left-radius: var(--mdc-filled-text-field-container-shape);
+        border-top-right-radius: var(--mdc-filled-text-field-container-shape);
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    // input {
+    //     font-size: var(--normal-font-size) !important;
+    // }
+
+    .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+        display: none;
     }
 }
 
